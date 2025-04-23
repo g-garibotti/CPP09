@@ -13,22 +13,18 @@
 
 class BitcoinExchange {
 private:
-    // Map to store date (as string) to exchange rate (as float)
     std::map<std::string, float> _database;
     
-    // Helper methods
     bool isValidDate(const std::string &date) const;
     bool isValidValue(const float value) const;
     std::string findClosestDate(const std::string &date) const;
     
 public:
-    // Orthodox Canonical Form
     BitcoinExchange();
     BitcoinExchange(const BitcoinExchange &other);
     BitcoinExchange &operator=(const BitcoinExchange &other);
     ~BitcoinExchange();
     
-    // Exception classes
     class FileOpenException : public std::exception {
     public:
         virtual const char *what() const throw() {
@@ -43,7 +39,6 @@ public:
         }
     };
     
-    // Specific methods
     void loadDatabase(const std::string &filename);
     void processInputFile(const std::string &filename);
 };
