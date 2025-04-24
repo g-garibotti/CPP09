@@ -1,8 +1,7 @@
 #include "PmergeMe.hpp"
 
-/* 
- * Ford-Johnson merge-insertion sort implementation for std::vector
- */
+
+
 std::vector<int> PmergeVec(std::vector<int>& tab) {
     size_t pairs = 0;
     
@@ -11,7 +10,6 @@ std::vector<int> PmergeVec(std::vector<int>& tab) {
     std::vector<int> small;
     std::vector<int>::iterator pos;
     
-    // Create pairs and separate into 'big' and 'small' elements
     for (std::vector<int>::iterator it = tab.begin(); it != tab.end(); ++it) {
         int n1 = *it;
         ++pairs;
@@ -27,7 +25,6 @@ std::vector<int> PmergeVec(std::vector<int>& tab) {
         }
     }
     
-    // Base case: only one pair
     if (pairs == 1) {
         result.push_back(small[0]);
         if (!big.empty())
@@ -35,10 +32,8 @@ std::vector<int> PmergeVec(std::vector<int>& tab) {
         return result;
     }
     
-    // Recursive call on the 'big' elements
     result = PmergeVec(big);
     
-    // Insert 'small' elements using binary search and Jacobsthal sequence
     std::vector<int> jacobsthal;
     jacobsthalSequence<std::vector<int> >(jacobsthal, small.size());
     
@@ -51,9 +46,8 @@ std::vector<int> PmergeVec(std::vector<int>& tab) {
     return result;
 }
 
-/*
- * Ford-Johnson merge-insertion sort implementation for std::deque
- */
+
+
 std::deque<int> PmergeDeque(std::deque<int>& tab) {
     size_t pairs = 0;
     
@@ -62,7 +56,6 @@ std::deque<int> PmergeDeque(std::deque<int>& tab) {
     std::deque<int> small;
     std::deque<int>::iterator pos;
     
-    // Create pairs and separate into 'big' and 'small' elements
     for (std::deque<int>::iterator it = tab.begin(); it != tab.end(); ++it) {
         int n1 = *it;
         ++pairs;
@@ -78,7 +71,6 @@ std::deque<int> PmergeDeque(std::deque<int>& tab) {
         }
     }
     
-    // Base case: only one pair
     if (pairs == 1) {
         result.push_back(small.front());
         if (!big.empty())
@@ -86,10 +78,8 @@ std::deque<int> PmergeDeque(std::deque<int>& tab) {
         return result;
     }
     
-    // Recursive call on the 'big' elements
     result = PmergeDeque(big);
     
-    // Insert 'small' elements using binary search and Jacobsthal sequence
     std::deque<int> jacobsthal;
     jacobsthalSequence<std::deque<int> >(jacobsthal, small.size());
     

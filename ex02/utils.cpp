@@ -8,35 +8,29 @@ void printTimes(int size, double vecTime, double dequeTime, double stdVecTime) {
 }
 
 void startSorts(std::vector<int> vec, std::deque<int> deque) {
-    // Display the input sequence
     std::cout << "Before: " << vec << std::endl;
     
     std::clock_t start, end;
     double vecTime, dequeTime, stdVecTime;
     
-    // Standard sort for comparison
     std::vector<int> stdSortVec = vec;
     start = std::clock();
     std::sort(stdSortVec.begin(), stdSortVec.end());
     end = std::clock();
     stdVecTime = double(end - start) / CLOCKS_PER_SEC;
     
-    // Vector merge-insertion sort
     start = std::clock();
     vec = PmergeVec(vec);
     end = std::clock();
     vecTime = double(end - start) / CLOCKS_PER_SEC;
     
-    // Deque merge-insertion sort
     start = std::clock();
     deque = PmergeDeque(deque);
     end = std::clock();
     dequeTime = double(end - start) / CLOCKS_PER_SEC;
     
-    // Display the sorted sequence
     std::cout << "After:  " << vec << std::endl;
     
-    // Print timing information
     printTimes(vec.size(), vecTime, dequeTime, stdVecTime);
 }
 
