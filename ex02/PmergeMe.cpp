@@ -9,6 +9,8 @@ std::vector<int> PmergeVec(std::vector<int>& tab) {
     std::vector<int> big;
     std::vector<int> small;
     std::vector<int>::iterator pos;
+
+    // hello bastien
     
     for (std::vector<int>::iterator it = tab.begin(); it != tab.end(); ++it) {
         int n1 = *it;
